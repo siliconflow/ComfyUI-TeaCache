@@ -626,7 +626,7 @@ def teacache_ltxvmodel_forward(
         if attention_mask is not None and not torch.is_floating_point(attention_mask):
             attention_mask = (attention_mask - 1).to(x.dtype).reshape((attention_mask.shape[0], 1, -1, attention_mask.shape[-1])) * torch.finfo(x.dtype).max        
         
-         pe = self._prepare_positional_embeddings(pixel_coords, frame_rate, x.dtype)
+        pe = self._prepare_positional_embeddings(pixel_coords, frame_rate, x.dtype)
 
         batch_size = x.shape[0]
         timestep, embedded_timestep = self.adaln_single(
